@@ -31,11 +31,6 @@ This README describes a series of custom key remappings for macOS using Karabine
 - **Function**: Converts H/J/K/L with Right Command to Arrow keys.
 - **Modifiers**: Mandatory right_command, optional any.
 
-### Right Command (`R⌘`) with Y
-
-- **Function**: Remaps Right Command (`R⌘`) + Y to Return (`Return`).
-- **Modifiers**: Mandatory right_command, optional any.
-
 ### Right Command (`R⌘`) with Brackets
 
 - **Function**:

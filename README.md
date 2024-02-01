@@ -1,53 +1,38 @@
-# Karabiner Elements Remaps README
+# Karabiner Configuration README
 
 ## Overview
 
-This README describes a set of custom key remapping configurations for macOS using Karabiner-Elements, a powerful keyboard customization tool. These configurations are designed to enhance productivity and streamline common tasks by redefining key behaviors.
+This README provides an overview of a custom configuration for Karabiner-Elements, enhancing keyboard functionality on macOS through key remapping.
 
-## Configuration Details
+## Key Remappings
 
-### Caps Lock Key
+| Description                                  | Key Combination                 | Remapped To                                | Are Optional Modifiers Available? |
+| -------------------------------------------- | ------------------------------- | ------------------------------------------ | --------------------------------- |
+| Caps Lock as Escape/Control                  | Caps Lock (⇪)                   | Escape on Tap / Control on Hold            | Yes                               |
+| Left Shift as Hyper Key                      | Left Shift (L^)                 | Hyper (Control + Shift + Option + Command) | No                                |
+| Spacebar Functionality                       | Spacebar                        | Spacebar on Tap / Left Shift on Hold       | Yes                               |
+| Shift + Backspace                            | Shift (⇧) + Backspace (⌫)       | Delete Forward Character                   | Yes                               |
+| Right Command as Navigation & Function Layer | Right Command (R⌘) + H          | Left Arrow                                 | Yes                               |
+| Right Command as Navigation & Function Layer | Right Command (R⌘) + J          | Down Arrow                                 | Yes                               |
+| Right Command as Navigation & Function Layer | Right Command (R⌘) + K          | Up Arrow                                   | Yes                               |
+| Right Command as Navigation & Function Layer | Right Command (R⌘) + L          | Right Arrow                                | Yes                               |
+| Right Command as Navigation & Function Layer | Right Command (R⌘) + 1          | F1                                         | Yes                               |
+| Right Command as Navigation & Function Layer | Right Command (R⌘) + 2          | F2                                         | Yes                               |
+| Right Command as Navigation & Function Layer | Right Command (R⌘) + 3          | F3                                         | Yes                               |
+| Right Command as Navigation & Function Layer | Right Command (R⌘) + 4          | F4                                         | Yes                               |
+| Right Command as Navigation & Function Layer | Right Command (R⌘) + 5          | F5                                         | Yes                               |
+| Right Command as Navigation & Function Layer | Right Command (R⌘) + 6          | F6                                         | Yes                               |
+| Right Command as Navigation & Function Layer | Right Command (R⌘) + 7          | F7                                         | Yes                               |
+| Right Command as Navigation & Function Layer | Right Command (R⌘) + 8          | F8                                         | Yes                               |
+| Right Command as Navigation & Function Layer | Right Command (R⌘) + 9          | F9                                         | Yes                               |
+| Right Command as Navigation & Function Layer | Right Command (R⌘) + 0          | F10                                        | Yes                               |
+| Right Command as Navigation & Function Layer | Right Command (R⌘) + Hyphen (-) | F11                                        | Yes                               |
+| Right Command as Navigation & Function Layer | Right Command (R⌘) + Equal (=)  | F12                                        | Yes                               |
+| Right Option as Left Option + Command        | Right Option (R⌥)               | Left Command (L⌘) + Left Option (L⌥)       | Yes                               |
 
-- **Description**: Converts the Caps Lock key to Escape when tapped and Control when held.
-- **Modifiers**: Allows optional modifiers to be combined.
+## Installation Instructions
 
-### Left Shift with Y
-
-- **Description**: Maps Left Shift + Y to function as Return.
-- **Behavior**: Key repeats when held down.
-
-### Left Shift with J/K/L
-
-- **Description**: Customizes deletion functionality with combinations of Left Shift + J/K/L to delete a character, word, or entire line backwards.
-- **Modifiers**: Utilizes a combination of control, shift, option, and command keys.
-
-### Left Shift with U/I
-
-- **Description**: Maps Left Shift + U/I to delete a character or word forwards.
-- **Modifiers**: Similar to the J/K/L mappings but for forward deletion.
-
-### Left Shift to Hyper Key
-
-- **Description**: Converts Left Shift to a Hyper key (Control + Shift + Option + Command).
-- **Modifiers**: This remap does not require additional modifiers.
-
-### Spacebar Functionality
-
-- **Description**: The spacebar functions normally when tapped, but acts as Right Shift when held.
-- **Modifiers**: Optional modifiers are allowed.
-
-### Right Command with Number Row
-
-- **Description**: Transforms Right Command + Number Row keys into corresponding Function keys (F1 to F12).
-- **Modifiers**: Requires Right Command; optional modifiers are allowed.
-
-### Right Command with H/J/K/L and A/S/D
-
-- **Description**: Implements Vim-like arrow key navigation with Right Command + H/J/K/L. Additionally, remaps Right Command + A/S/D to act as Shift, Option, and Command respectively.
-- **Modifiers**: Optional modifiers are allowed. Incorporates a simple Vi mode toggle to enable/disable these mappings.
-
-## Installation Notes
-
-- Ensure Karabiner-Elements is installed on your macOS system.
-- Navigate to `~/.config/karabiner/karabiner.json` or use the Karabiner-Elements GUI to import these rules.
-- Adjust or extend these mappings as needed for personal preference.
+1. Ensure Karabiner-Elements is installed on your macOS system.
+2. Access the Karabiner-Elements configuration file, typically located at `~/.config/karabiner/karabiner.json`.
+3. Copy the JSON rules into the configuration file.
+4. Save the changes and restart Karabiner-Elements to apply the new configuration.

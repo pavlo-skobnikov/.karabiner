@@ -1,54 +1,53 @@
-# Karabiner Remaps Configuration README
+# Karabiner Elements Remaps README
 
 ## Overview
 
-This README describes a series of custom key remappings for macOS using Karabiner-Elements, a powerful keyboard customization tool. These remappings are designed to enhance keyboard functionality and user efficiency.
+This README describes a set of custom key remapping configurations for macOS using Karabiner-Elements, a powerful keyboard customization tool. These configurations are designed to enhance productivity and streamline common tasks by redefining key behaviors.
 
-## Key Remappings
+## Configuration Details
 
 ### Caps Lock Key
 
-- **Function**: Acts as Escape (`Escape`) when tapped and Control (`⌃`) when held.
-- **Modifiers**: None or any combination of left_command, left_shift, left_option.
+- **Description**: Converts the Caps Lock key to Escape when tapped and Control when held.
+- **Modifiers**: Allows optional modifiers to be combined.
 
-### Left Control Key
+### Left Shift with Y
 
-- **Function**: Converts Left Control (`L^`) into a Hyper key (combination of Control, Shift, Option, Command).
-- **Modifiers**: None.
+- **Description**: Maps Left Shift + Y to function as Return.
+- **Behavior**: Key repeats when held down.
 
-### Spacebar Key
+### Left Shift with J/K/L
 
-- **Function**: Regular spacebar functionality on tap, and acts as Left Shift (`L⇧`) when held.
-- **Modifiers**: Optional any.
+- **Description**: Customizes deletion functionality with combinations of Left Shift + J/K/L to delete a character, word, or entire line backwards.
+- **Modifiers**: Utilizes a combination of control, shift, option, and command keys.
 
-### Right Command (`R⌘`) with Number Row
+### Left Shift with U/I
 
-- **Function**: Remaps numbers 1-0 and `-`/`=` keys with Right Command to function keys F1-F12.
-- **Modifiers**: Mandatory right_command, optional any.
+- **Description**: Maps Left Shift + U/I to delete a character or word forwards.
+- **Modifiers**: Similar to the J/K/L mappings but for forward deletion.
 
-### Right Command (`R⌘`) with H/J/K/L
+### Left Shift to Hyper Key
 
-- **Function**: Converts H/J/K/L with Right Command to Arrow keys.
-- **Modifiers**: Mandatory right_command, optional any.
+- **Description**: Converts Left Shift to a Hyper key (Control + Shift + Option + Command).
+- **Modifiers**: This remap does not require additional modifiers.
 
-### Right Command (`R⌘`) with Brackets
+### Spacebar Functionality
 
-- **Function**:
-  - `[`: Delete backward (`Delete`).
-  - `]`: Delete forward (`Forward Delete`).
-- **Modifiers**: Mandatory right_command, optional any.
+- **Description**: The spacebar functions normally when tapped, but acts as Right Shift when held.
+- **Modifiers**: Optional modifiers are allowed.
 
-### Right Option (`R⌥`)
+### Right Command with Number Row
 
-- **Function**: Remaps Right Option (`R⌥`) to Left Option (`L⌥`) + Left Command (`L⌘`).
-- **Modifiers**: Optional any.
+- **Description**: Transforms Right Command + Number Row keys into corresponding Function keys (F1 to F12).
+- **Modifiers**: Requires Right Command; optional modifiers are allowed.
+
+### Right Command with H/J/K/L and A/S/D
+
+- **Description**: Implements Vim-like arrow key navigation with Right Command + H/J/K/L. Additionally, remaps Right Command + A/S/D to act as Shift, Option, and Command respectively.
+- **Modifiers**: Optional modifiers are allowed. Incorporates a simple Vi mode toggle to enable/disable these mappings.
 
 ## Installation Notes
 
-- Ensure Karabiner-Elements is installed on your macOS.
-- Place this configuration in the appropriate Karabiner-Elements configuration file, typically located at `~/.config/karabiner/karabiner.json`.
-- Adjust or extend these mappings according to personal preference.
-
----
-
-**Note:** This configuration is designed to optimize keyboard usage efficiency, particularly useful for power users and those who prefer keyboard shortcuts over mouse interactions. The mappings are particularly effective in a macOS environment where Karabiner-Elements is supported.
+- Ensure Karabiner-Elements is installed on your macOS system.
+- Navigate to `~/.config/karabiner/karabiner.json` or use the Karabiner-Elements GUI to import these rules.
+- Adjust or extend these mappings as needed for personal preference.

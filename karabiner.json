@@ -42,11 +42,150 @@
             ]
           },
           {
+            "description": "L⇧+y -> Return",
+            "manipulators": [
+              {
+                "from": {
+                  "key_code": "y",
+                  "modifiers": {
+                    "mandatory": [
+                      "left_control",
+                      "left_shift",
+                      "left_option",
+                      "left_command"
+                    ],
+                    "optional": ["any"]
+                  }
+                },
+                "to": [
+                  {
+                    "key_code": "return_or_enter",
+                    "repeat": true
+                  }
+                ],
+                "type": "basic"
+              }
+            ]
+          },
+          {
+            "description": "L⇧+j/k/l -> Delete Backward Character/Word/Line",
+            "manipulators": [
+              {
+                "from": {
+                  "key_code": "j",
+                  "modifiers": {
+                    "mandatory": [
+                      "left_control",
+                      "left_shift",
+                      "left_option",
+                      "left_command"
+                    ]
+                  }
+                },
+                "to": [
+                  {
+                    "key_code": "delete_or_backspace",
+                    "repeat": true
+                  }
+                ],
+                "type": "basic"
+              },
+              {
+                "from": {
+                  "key_code": "k",
+                  "modifiers": {
+                    "mandatory": [
+                      "left_control",
+                      "left_shift",
+                      "left_option",
+                      "left_command"
+                    ]
+                  }
+                },
+                "to": [
+                  {
+                    "key_code": "delete_or_backspace",
+                    "modifiers": ["left_option"],
+                    "repeat": true
+                  }
+                ],
+                "type": "basic"
+              },
+              {
+                "from": {
+                  "key_code": "l",
+                  "modifiers": {
+                    "mandatory": [
+                      "left_control",
+                      "left_shift",
+                      "left_option",
+                      "left_command"
+                    ]
+                  }
+                },
+                "to": [
+                  {
+                    "key_code": "delete_or_backspace",
+                    "modifiers": ["left_command"],
+                    "repeat": true
+                  }
+                ],
+                "type": "basic"
+              }
+            ]
+          },
+          {
+            "description": "L⇧+u/i -> Delete Forward Character/Word",
+            "manipulators": [
+              {
+                "from": {
+                  "key_code": "u",
+                  "modifiers": {
+                    "mandatory": [
+                      "left_control",
+                      "left_shift",
+                      "left_option",
+                      "left_command"
+                    ]
+                  }
+                },
+                "to": [
+                  {
+                    "key_code": "delete_forward",
+                    "repeat": true
+                  }
+                ],
+                "type": "basic"
+              },
+              {
+                "from": {
+                  "key_code": "i",
+                  "modifiers": {
+                    "mandatory": [
+                      "left_control",
+                      "left_shift",
+                      "left_option",
+                      "left_command"
+                    ]
+                  }
+                },
+                "to": [
+                  {
+                    "key_code": "delete_forward",
+                    "modifiers": ["left_option"],
+                    "repeat": true
+                  }
+                ],
+                "type": "basic"
+              }
+            ]
+          },
+          {
             "description": "L^ -> Hyper",
             "manipulators": [
               {
                 "from": {
-                  "key_code": "left_control"
+                  "key_code": "left_shift"
                 },
                 "to": [
                   {
@@ -59,7 +198,7 @@
             ]
           },
           {
-            "description": "Spacebar -> Spacebar on Tap / L⇧ on Hold",
+            "description": "Spacebar -> Spacebar on Tap / R⇧ on Hold",
             "manipulators": [
               {
                 "from": {
@@ -70,7 +209,7 @@
                 },
                 "to": [
                   {
-                    "key_code": "left_shift"
+                    "key_code": "right_shift"
                   }
                 ],
                 "to_if_alone": [
@@ -268,28 +407,13 @@
             ]
           },
           {
-            "description": "R⌘+h/j/k/l -> Arrow Keys",
+            "description": "R⌘+h/j/k/l -> Arrow Keys & R⌘+a/s/d -> ⇧/⌥/⌘",
             "manipulators": [
               {
-                "from": {
-                  "key_code": "h",
-                  "modifiers": {
-                    "mandatory": ["right_command"],
-                    "optional": ["any"]
-                  }
-                },
-                "to": [
-                  {
-                    "key_code": "left_arrow"
-                  }
-                ],
-                "type": "basic"
-              },
-              {
+                "type": "basic",
                 "from": {
                   "key_code": "j",
                   "modifiers": {
-                    "mandatory": ["right_command"],
                     "optional": ["any"]
                   }
                 },
@@ -298,13 +422,61 @@
                     "key_code": "down_arrow"
                   }
                 ],
-                "type": "basic"
+                "conditions": [
+                  {
+                    "type": "variable_if",
+                    "name": "simple_vi_mode",
+                    "value": 1
+                  }
+                ]
               },
               {
+                "type": "basic",
+                "from": {
+                  "simultaneous": [
+                    {
+                      "key_code": "right_command"
+                    },
+                    {
+                      "key_code": "j"
+                    }
+                  ],
+                  "simultaneous_options": {
+                    "key_down_order": "strict",
+                    "key_up_order": "strict_inverse",
+                    "to_after_key_up": [
+                      {
+                        "set_variable": {
+                          "name": "simple_vi_mode",
+                          "value": 0
+                        }
+                      }
+                    ]
+                  },
+                  "modifiers": {
+                    "optional": ["any"]
+                  }
+                },
+                "to": [
+                  {
+                    "set_variable": {
+                      "name": "simple_vi_mode",
+                      "value": 1
+                    }
+                  },
+                  {
+                    "key_code": "down_arrow"
+                  }
+                ],
+                "parameters": {
+                  "basic.simultaneous_threshold_milliseconds": 500
+                }
+              },
+              {
+                "type": "basic",
                 "from": {
                   "key_code": "k",
                   "modifiers": {
-                    "mandatory": ["right_command"],
                     "optional": ["any"]
                   }
                 },
@@ -313,13 +485,124 @@
                     "key_code": "up_arrow"
                   }
                 ],
-                "type": "basic"
+                "conditions": [
+                  {
+                    "type": "variable_if",
+                    "name": "simple_vi_mode",
+                    "value": 1
+                  }
+                ]
               },
               {
+                "type": "basic",
+                "from": {
+                  "simultaneous": [
+                    {
+                      "key_code": "right_command"
+                    },
+                    {
+                      "key_code": "k"
+                    }
+                  ],
+                  "simultaneous_options": {
+                    "key_down_order": "strict",
+                    "key_up_order": "strict_inverse",
+                    "to_after_key_up": [
+                      {
+                        "set_variable": {
+                          "name": "simple_vi_mode",
+                          "value": 0
+                        }
+                      }
+                    ]
+                  },
+                  "modifiers": {
+                    "optional": ["any"]
+                  }
+                },
+                "to": [
+                  {
+                    "set_variable": {
+                      "name": "simple_vi_mode",
+                      "value": 1
+                    }
+                  },
+                  {
+                    "key_code": "up_arrow"
+                  }
+                ],
+                "parameters": {
+                  "basic.simultaneous_threshold_milliseconds": 500
+                }
+              },
+              {
+                "type": "basic",
+                "from": {
+                  "key_code": "h",
+                  "modifiers": {
+                    "optional": ["any"]
+                  }
+                },
+                "to": [
+                  {
+                    "key_code": "left_arrow"
+                  }
+                ],
+                "conditions": [
+                  {
+                    "type": "variable_if",
+                    "name": "simple_vi_mode",
+                    "value": 1
+                  }
+                ]
+              },
+              {
+                "type": "basic",
+                "from": {
+                  "simultaneous": [
+                    {
+                      "key_code": "right_command"
+                    },
+                    {
+                      "key_code": "h"
+                    }
+                  ],
+                  "simultaneous_options": {
+                    "key_down_order": "strict",
+                    "key_up_order": "strict_inverse",
+                    "to_after_key_up": [
+                      {
+                        "set_variable": {
+                          "name": "simple_vi_mode",
+                          "value": 0
+                        }
+                      }
+                    ]
+                  },
+                  "modifiers": {
+                    "optional": ["any"]
+                  }
+                },
+                "to": [
+                  {
+                    "set_variable": {
+                      "name": "simple_vi_mode",
+                      "value": 1
+                    }
+                  },
+                  {
+                    "key_code": "left_arrow"
+                  }
+                ],
+                "parameters": {
+                  "basic.simultaneous_threshold_milliseconds": 500
+                }
+              },
+              {
+                "type": "basic",
                 "from": {
                   "key_code": "l",
                   "modifiers": {
-                    "mandatory": ["right_command"],
                     "optional": ["any"]
                   }
                 },
@@ -328,69 +611,244 @@
                     "key_code": "right_arrow"
                   }
                 ],
-                "type": "basic"
-              }
-            ]
-          },
-          {
-            "description": "R⌘+[ -> Delete Backward",
-            "manipulators": [
-              {
-                "from": {
-                  "key_code": "open_bracket",
-                  "modifiers": {
-                    "mandatory": ["right_command"],
-                    "optional": ["any"]
-                  }
-                },
-                "to": [
+                "conditions": [
                   {
-                    "key_code": "delete_or_backspace",
-                    "repeat": true
+                    "type": "variable_if",
+                    "name": "simple_vi_mode",
+                    "value": 1
                   }
-                ],
-                "type": "basic"
-              }
-            ]
-          },
-          {
-            "description": "R⌘+] -> Forward Backward",
-            "manipulators": [
+                ]
+              },
               {
+                "type": "basic",
                 "from": {
-                  "key_code": "close_bracket",
-                  "modifiers": {
-                    "mandatory": ["right_command"],
-                    "optional": ["any"]
-                  }
-                },
-                "to": [
-                  {
-                    "key_code": "delete_forward",
-                    "repeat": true
-                  }
-                ],
-                "type": "basic"
-              }
-            ]
-          },
-          {
-            "description": "R⌥ -> L⌥+L⌘",
-            "manipulators": [
-              {
-                "from": {
-                  "key_code": "right_option",
+                  "simultaneous": [
+                    {
+                      "key_code": "right_command"
+                    },
+                    {
+                      "key_code": "l"
+                    }
+                  ],
+                  "simultaneous_options": {
+                    "key_down_order": "strict",
+                    "key_up_order": "strict_inverse",
+                    "to_after_key_up": [
+                      {
+                        "set_variable": {
+                          "name": "simple_vi_mode",
+                          "value": 0
+                        }
+                      }
+                    ]
+                  },
                   "modifiers": {
                     "optional": ["any"]
                   }
                 },
                 "to": [
                   {
-                    "key_code": "left_command",
-                    "modifiers": ["left_option"]
+                    "set_variable": {
+                      "name": "simple_vi_mode",
+                      "value": 1
+                    }
+                  },
+                  {
+                    "key_code": "right_arrow"
                   }
                 ],
-                "type": "basic"
+                "parameters": {
+                  "basic.simultaneous_threshold_milliseconds": 500
+                }
+              },
+              {
+                "type": "basic",
+                "from": {
+                  "key_code": "a",
+                  "modifiers": {
+                    "optional": ["any"]
+                  }
+                },
+                "to": [
+                  {
+                    "key_code": "left_shift"
+                  }
+                ],
+                "conditions": [
+                  {
+                    "type": "variable_if",
+                    "name": "simple_vi_mode",
+                    "value": 1
+                  }
+                ]
+              },
+              {
+                "type": "basic",
+                "from": {
+                  "simultaneous": [
+                    {
+                      "key_code": "right_command"
+                    },
+                    {
+                      "key_code": "a"
+                    }
+                  ],
+                  "simultaneous_options": {
+                    "key_down_order": "strict",
+                    "key_up_order": "strict_inverse",
+                    "to_after_key_up": [
+                      {
+                        "set_variable": {
+                          "name": "simple_vi_mode",
+                          "value": 0
+                        }
+                      }
+                    ]
+                  },
+                  "modifiers": {
+                    "optional": ["any"]
+                  }
+                },
+                "to": [
+                  {
+                    "set_variable": {
+                      "name": "simple_vi_mode",
+                      "value": 1
+                    }
+                  },
+                  {
+                    "key_code": "left_shift"
+                  }
+                ],
+                "parameters": {
+                  "basic.simultaneous_threshold_milliseconds": 500
+                }
+              },
+              {
+                "type": "basic",
+                "from": {
+                  "key_code": "s",
+                  "modifiers": {
+                    "optional": ["any"]
+                  }
+                },
+                "to": [
+                  {
+                    "key_code": "left_option"
+                  }
+                ],
+                "conditions": [
+                  {
+                    "type": "variable_if",
+                    "name": "simple_vi_mode",
+                    "value": 1
+                  }
+                ]
+              },
+              {
+                "type": "basic",
+                "from": {
+                  "simultaneous": [
+                    {
+                      "key_code": "right_command"
+                    },
+                    {
+                      "key_code": "s"
+                    }
+                  ],
+                  "simultaneous_options": {
+                    "key_down_order": "strict",
+                    "key_up_order": "strict_inverse",
+                    "to_after_key_up": [
+                      {
+                        "set_variable": {
+                          "name": "simple_vi_mode",
+                          "value": 0
+                        }
+                      }
+                    ]
+                  },
+                  "modifiers": {
+                    "optional": ["any"]
+                  }
+                },
+                "to": [
+                  {
+                    "set_variable": {
+                      "name": "simple_vi_mode",
+                      "value": 1
+                    }
+                  },
+                  {
+                    "key_code": "left_option"
+                  }
+                ],
+                "parameters": {
+                  "basic.simultaneous_threshold_milliseconds": 500
+                }
+              },
+              {
+                "type": "basic",
+                "from": {
+                  "key_code": "d",
+                  "modifiers": {
+                    "optional": ["any"]
+                  }
+                },
+                "to": [
+                  {
+                    "key_code": "left_command"
+                  }
+                ],
+                "conditions": [
+                  {
+                    "type": "variable_if",
+                    "name": "simple_vi_mode",
+                    "value": 1
+                  }
+                ]
+              },
+              {
+                "type": "basic",
+                "from": {
+                  "simultaneous": [
+                    {
+                      "key_code": "right_command"
+                    },
+                    {
+                      "key_code": "d"
+                    }
+                  ],
+                  "simultaneous_options": {
+                    "key_down_order": "strict",
+                    "key_up_order": "strict_inverse",
+                    "to_after_key_up": [
+                      {
+                        "set_variable": {
+                          "name": "simple_vi_mode",
+                          "value": 0
+                        }
+                      }
+                    ]
+                  },
+                  "modifiers": {
+                    "optional": ["any"]
+                  }
+                },
+                "to": [
+                  {
+                    "set_variable": {
+                      "name": "simple_vi_mode",
+                      "value": 1
+                    }
+                  },
+                  {
+                    "key_code": "left_command"
+                  }
+                ],
+                "parameters": {
+                  "basic.simultaneous_threshold_milliseconds": 500
+                }
               }
             ]
           }

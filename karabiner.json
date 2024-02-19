@@ -42,23 +42,6 @@
             ]
           },
           {
-            "description": "L^ -> Hyper",
-            "manipulators": [
-              {
-                "from": {
-                  "key_code": "left_shift"
-                },
-                "to": [
-                  {
-                    "key_code": "left_control",
-                    "modifiers": ["left_shift", "left_option", "left_command"]
-                  }
-                ],
-                "type": "basic"
-              }
-            ]
-          },
-          {
             "description": "Spacebar -> Spacebar on Tap / L⇧ on Hold",
             "manipulators": [
               {
@@ -342,26 +325,6 @@
                 "to": [
                   {
                     "key_code": "f12"
-                  }
-                ],
-                "type": "basic"
-              }
-            ]
-          },
-          {
-            "description": "R⌥ -> L⌥+L⌘",
-            "manipulators": [
-              {
-                "from": {
-                  "key_code": "right_option",
-                  "modifiers": {
-                    "optional": ["any"]
-                  }
-                },
-                "to": [
-                  {
-                    "key_code": "left_command",
-                    "modifiers": ["left_option"]
                   }
                 ],
                 "type": "basic"

@@ -342,11 +342,7 @@
                 "to": [
                   {
                     "key_code": "left_control",
-                    "modifiers": [
-                      "left_option",
-                      "left_command",
-                      "left_shift"
-                    ]
+                    "modifiers": ["left_option", "left_command", "left_shift"]
                   }
                 ]
               }
@@ -371,6 +367,25 @@
                 "to": [
                   {
                     "shell_command": "open -a Safari"
+                  }
+                ]
+              },
+              {
+                "type": "basic",
+                "from": {
+                  "key_code": "g",
+                  "modifiers": {
+                    "mandatory": [
+                      "left_control",
+                      "left_shift",
+                      "left_option",
+                      "left_command"
+                    ]
+                  }
+                },
+                "to": [
+                  {
+                    "shell_command": "open -a 'Google Chrome'"
                   }
                 ]
               },

@@ -40,7 +40,7 @@
             ]
           },
           {
-            "description": "⇪ -> Escape on Tap / ⌃ on Hold",
+            "description": "Caps Lock -> Escape on Tap / Control on Hold",
             "manipulators": [
               {
                 "from": {
@@ -83,7 +83,7 @@
             ]
           },
           {
-            "description": "Spacebar -> Spacebar on Tap / L⇧ on Hold",
+            "description": "Spacebar -> Spacebar on Tap / Shift on Hold",
             "manipulators": [
               {
                 "from": {
@@ -107,7 +107,7 @@
             ]
           },
           {
-            "description": "⇧+⌫ -> Delete Forward Character",
+            "description": "Shift+Delete -> Delete Forward Character",
             "manipulators": [
               {
                 "from": {
@@ -128,7 +128,7 @@
             ]
           },
           {
-            "description": "R⌘ -> Navigation & Function Layer",
+            "description": "Right Command -> Navigation & Function Layer",
             "manipulators": [
               {
                 "from": {

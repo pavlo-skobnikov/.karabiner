@@ -40,6 +40,30 @@
             ]
           },
           {
+            "description": "Caps Lock -> Escape on Tap / Control on Hold",
+            "manipulators": [
+              {
+                "from": {
+                  "key_code": "caps_lock",
+                  "modifiers": {
+                    "optional": ["left_option", "left_command", "left_shift"]
+                  }
+                },
+                "to": [
+                  {
+                    "key_code": "left_control"
+                  }
+                ],
+                "to_if_alone": [
+                  {
+                    "key_code": "escape"
+                  }
+                ],
+                "type": "basic"
+              }
+            ]
+          },
+          {
             "description": "Spacebar -> Spacebar on Tap / Shift on Hold",
             "manipulators": [
               {
@@ -595,31 +619,11 @@
       "simple_modifications": [
         {
           "from": {
-            "key_code": "caps_lock"
-          },
-          "to": [
-            {
-              "key_code": "left_control"
-            }
-          ]
-        },
-        {
-          "from": {
             "key_code": "left_shift"
           },
           "to": [
             {
               "key_code": "left_option"
-            }
-          ]
-        },
-        {
-          "from": {
-            "key_code": "non_us_backslash"
-          },
-          "to": [
-            {
-              "key_code": "escape"
             }
           ]
         }

@@ -8,9 +8,8 @@ This README provides an overview of a custom configuration for Karabiner-Element
 
 | Description                                  | Key Combination           | Remapped To                                |
 | -------------------------------------------- | ------------------------- | ------------------------------------------ |
-| Non US Backslash as Escape                   | Non US Backslash          | Escape                                     |
 | Tab as Tab/Hyper                             | Tab                       | Tab on Tap / Hyper on Hold                 |
-| Caps Lock as Control                         | Caps Lock                 | Caps Lock                                  |
+| Caps Lock as Escape/Control                  | Caps Lock                 | Escape on Tap / Control on Hold            |
 | Left Shift as Option                         | Left Shift                | Option                                     |
 | Spacebar as Spacebar/Shift                   | Spacebar                  | Spacebar on Tap / Left Shift on Hold       |
 | Shift + Backspace                            | Shift (⇧) + Backspace (⌫) | Delete Forward                             |

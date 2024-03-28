@@ -18,28 +18,6 @@
         },
         "rules": [
           {
-            "description": "Tab -> Hyper on Hold",
-            "manipulators": [
-              {
-                "from": {
-                  "key_code": "tab"
-                },
-                "to": [
-                  {
-                    "key_code": "left_control",
-                    "modifiers": ["left_option", "left_command", "left_shift"]
-                  }
-                ],
-                "to_if_alone": [
-                  {
-                    "key_code": "tab"
-                  }
-                ],
-                "type": "basic"
-              }
-            ]
-          },
-          {
             "description": "Caps Lock -> Escape on Tap / Control on Hold",
             "manipulators": [
               {

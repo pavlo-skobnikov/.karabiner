@@ -42,6 +42,31 @@
             ]
           },
           {
+            "description": "Control -> Shift + Command",
+            "manipulators": [
+              {
+                "from": {
+                  "key_code": "left_control",
+                  "modifiers": {
+                    "optional": ["left_control", "left_command"]
+                  }
+                },
+                "to": [
+                  {
+                    "key_code": "left_command",
+                    "modifiers": ["left_shift"]
+                  }
+                ],
+                "to_if_alone": [
+                  {
+                    "key_code": "escape"
+                  }
+                ],
+                "type": "basic"
+              }
+            ]
+          },
+          {
             "description": "Spacebar -> Spacebar on Tap / Shift on Hold",
             "manipulators": [
               {

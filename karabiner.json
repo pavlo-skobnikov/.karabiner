@@ -42,11 +42,33 @@
             ]
           },
           {
-            "description": "Control -> Shift + Command",
+            "description": "Control -> Hyper",
             "manipulators": [
               {
                 "from": {
-                  "key_code": "left_control",
+                  "key_code": "left_control"
+                },
+                "to": [
+                  {
+                    "key_code": "left_command",
+                    "modifiers": ["left_control", "left_option", "left_shift"]
+                  }
+                ],
+                "to_if_alone": [
+                  {
+                    "key_code": "escape"
+                  }
+                ],
+                "type": "basic"
+              }
+            ]
+          },
+          {
+            "description": "Option -> Command + Shift",
+            "manipulators": [
+              {
+                "from": {
+                  "key_code": "right_option",
                   "modifiers": {
                     "optional": ["left_control", "left_command"]
                   }
@@ -627,6 +649,16 @@
           "to": [
             {
               "key_code": "left_option"
+            }
+          ]
+        },
+        {
+          "from": {
+            "key_code": "left_option"
+          },
+          "to": [
+            {
+              "key_code": "right_option"
             }
           ]
         }

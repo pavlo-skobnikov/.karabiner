@@ -10,6 +10,8 @@ This README provides an overview of a custom configuration for Karabiner-Element
 | -------------------------------------------- | ------------------------- | ------------------------------------------ |
 | Caps Lock as Escape/Control                  | Caps Lock                 | Escape on Tap / Control on Hold            |
 | Left Shift as Option                         | Left Shift                | Option                                     |
+| Left Control as Hyper key                    | Left Control              | Control + Option + Command + Shift (HYPER) |
+| Left Option as Command + Shift               | Left Option               | Command + Shift                            |
 | Spacebar as Spacebar/Shift                   | Spacebar                  | Spacebar on Tap / Left Shift on Hold       |
 | Shift + Backspace                            | Shift (⇧) + Backspace (⌫) | Delete Forward                             |
 | Right Command as Navigation & Function Layer | Right Command + H         | Left Arrow                                 |
@@ -28,7 +30,6 @@ This README provides an overview of a custom configuration for Karabiner-Element
 | Right Command as Navigation & Function Layer | Right Command + 0         | F10                                        |
 | Right Command as Navigation & Function Layer | Right Command + Hyphen    | F11                                        |
 | Right Command as Navigation & Function Layer | Right Command + Equal     | F12                                        |
-| Left Control as Hyper key                    | Left Control (L^)         | Control + Option + Command + Shift (HYPER) |
 
 ## Installation Instructions
 

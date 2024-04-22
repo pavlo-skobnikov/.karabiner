@@ -6,21 +6,42 @@ This README provides an overview of a custom configuration for Karabiner-Element
 
 ## Key Remappings
 
-| Description                 | Key Combination   | Remapped To                                |
-| --------------------------- | ----------------- | ------------------------------------------ |
-| Caps Lock as Escape/Control | Caps Lock         | Escape on Tap / Control on Hold            |
-| Left Control as Hyper key   | Left Control      | Control + Option + Command + Shift (HYPER) |
-| Fn as Navigation Layer      | Right Command + A | Shift                                      |
-| Fn as Navigation Layer      | Right Command + S | Option                                     |
-| Fn as Navigation Layer      | Right Command + D | Command                                    |
-| Fn as Navigation Layer      | Right Command + H | Left Arrow                                 |
-| Fn as Navigation Layer      | Right Command + J | Down Arrow                                 |
-| Fn as Navigation Layer      | Right Command + K | Up Arrow                                   |
-| Fn as Navigation Layer      | Right Command + L | Right Arrow                                |
+### Double-Key Home Row Modifiers
+This configuration enables utilizing double-key combinations for home row modifiers.
+- Pressing `a` + `f`: `Left Command` -> `Left Control`
+- Pressing `s` + `f`: `Left Command` -> `Left Shift`
+- Pressing `d` + `f`: `Left Command` -> `Left Option`
+- Pressing `a` + `d`: `Left Command` -> `Left Control` + `Left Option`
+- Pressing `a` + `s`: `Left Command` -> `Left Control` + `Left Shift`
+- Pressing `s` + `d`: `Left Command` -> `Left Shift` + `Left Option`
+- Pressing `semicolon` + `j`: `Right Command` -> `Right Control`
+- Pressing `l` + `j`: `Right Command` -> `Right Shift`
+- Pressing `k` + `j`: `Right Command` -> `Right Option`
+- Pressing `semicolon` + `k`: `Right Command` -> `Right Control` + `Right Option`
+- Pressing `semicolon` + `l`: `Right Command` -> `Right Control` + `Right Shift`
+- Pressing `l` + `k`: `Right Command` -> `Right Shift` + `Right Option`
+
+### Caps Lock as Escape
+- Pressing `Caps Lock`: `Escape`
+
+### Double Option as Hyper
+- Pressing `Left Option` + `Right Option`: `Left Control` + `Left Shift` + `Left Option` + `Left Command`
+
+### Double Command for Navigation
+- Pressing `Left Command` + `Right Command`: Set `nav_mode` to `1` (Toggle)
+  - While `nav_mode` is `1`:
+    - Pressing `j`: `Down Arrow`
+    - Pressing `k`: `Up Arrow`
+    - Pressing `h`: `Left Arrow`
+    - Pressing `l`: `Right Arrow`
+    - Pressing `a`: `Left Control`
+    - Pressing `s`: `Left Shift`
+    - Pressing `d`: `Left Option`
+    - Pressing `f`: `Left Command`
 
 ## Installation Instructions
 
 1. Ensure Karabiner-Elements is installed on your macOS system.
 2. Access the Karabiner-Elements configuration file, typically located at `~/.config/karabiner/karabiner.json`.
-3. Copy the JSON rules into the configuration file.
+3. Copy the provided JSON rules into the configuration file.
 4. Save the changes and restart Karabiner-Elements to apply the new configuration.

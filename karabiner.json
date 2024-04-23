@@ -488,6 +488,27 @@
                 "type": "basic"
               }
             ]
+          },
+          {
+            "description": "Shift+Delete -> Delete Forward Character",
+            "manipulators": [
+              {
+                "from": {
+                  "key_code": "delete_or_backspace",
+                  "modifiers": {
+                    "mandatory": ["left_shift"],
+                    "optional": ["any"]
+                  }
+                },
+                "to": [
+                  {
+                    "key_code": "delete_forward",
+                    "repeat": true
+                  }
+                ],
+                "type": "basic"
+              }
+            ]
           }
         ]
       },

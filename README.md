@@ -39,6 +39,9 @@ This configuration enables utilizing double-key combinations for home row modifi
     - Pressing `d`: `Left Option`
     - Pressing `f`: `Left Command`
 
+### Shift w/ Delete for Forward Delete
+- Pressing `Shift` + `Delete`: `Forward Delete`
+
 ## Installation Instructions
 
 1. Ensure Karabiner-Elements is installed on your macOS system.

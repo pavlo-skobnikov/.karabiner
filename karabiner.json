@@ -449,6 +449,17 @@
             ]
           },
           {
+            "description": "Spacebar -> Shift on Hold",
+            "manipulators": [
+              {
+                "from": { "key_code": "spacebar" },
+                "to": [{ "key_code": "right_shift" }],
+                "to_if_alone": [{ "key_code": "spacebar" }],
+                "type": "basic"
+              }
+            ]
+          },
+          {
             "description": "Shift+Delete -> Delete Forward Character",
             "manipulators": [
               {

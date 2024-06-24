@@ -1,0 +1,170 @@
+;; This file is a configuration file for goku to generate the configuration file
+;; for Karabiner-Elements.
+;;
+;; The EDN format allows for a _very_ concise and flexible configuration of Karabiner.
+;;
+;; There are several main guidances that this configuration follows:
+;;  - Keep both hands engaged in typing i.e. opposing hands should be engaged equally.
+;;  - Reduce the strain on the pinky fingers by keeping their "active areas" to a minimum.
+;;  - Ensure that the wrists are in a neutral position as much as possible.
+;;  - Make the custom rules and mappings as agnostic as possible to the resulting actions.
+;;  - Engage the thumbs more in typing.
+;;
+;; Below is a brief reference for the to/from mappings:
+;;  !  | means mandatory
+;;  #  | means optional
+;;  C  | left_command
+;;  T  | left_control
+;;  O  | left_option
+;;  S  | left_shift
+;;  F  | fn
+;;  Q  | right_command
+;;  W  | right_control
+;;  E  | right_option
+;;  R  | right_shift
+;;  P  | caps_lock
+;;  !! | mandatory command + control + optional + shift (hyper)
+;;  ## | optional any
+{:templates {:open "open -a \"%s\""
+             :open-chrome-profile "open -a \"Google Chrome\" --args --profile-directory=\"%s\""}
+
+ :main [{:des "Convenient Spacebar"
+         ; This modification makes the spacebar more useful by turning it
+         ; into the Left Shift when it's held down and used in combination
+         ; with other keys.
+         ; When the spacebar is tapped, it acts as the regular Spacebar.
+         ; Although this modification doesn't follow the "best practices"
+         ; of typig techniques, it's very convenient and comfortable.
+         :rules [[:##spacebar :left_shift nil {:alone :spacebar}]]}
+
+        {:des "Mirror Control & Easy Escape"
+         ; This modification does several things:
+         ;  - Caps Lock is turned into the Left Control when held down.
+         ;  - Caps Lock is turned into the Escape when tapped.
+         ;  - Quote (') is turned into the Right Control when held down.
+         ; These rules first and foremost make both the Control and Escape
+         ; more accessible and comfortable to use. Secondly, the modification
+         ; fixes the issue of the Control key on MacOs being asymmetrical i.e.
+         ; only available on the left side of the keyboard.
+         :rules [[:#C#O#Scaps_lock :left_control nil {:alone :escape}]
+                 [:#Q#E#Rquote :right_control nil {:alone :quote}]]}
+
+        {:des "Right Command Layer - Navigation & Actions",
+         ; This "layer" is activated by holding Right Command and using the keys
+         ; that are supposed to be used with the right hand with the correct
+         ; typing technique.
+         ; This layer provides 4 main functionalities:
+         ;  - Better access to function keys (F6-F12).
+         ;  - Comfortable Tab, Return, and Fn.
+         ;  - Comfortable navigation over text.
+         ;  - Comfortable text deletion.
+         ; All of the functionalities above are grouped by "levels" of keys in
+         ; relation to the home row.
+         ; Additionally, most of the rules allow only the left modifiers as they
+         ; are triggered by the opposing hand, and this is in the accordance
+         ; with the "correct" typing technique.
+         :rules [; Function keys => 6/7/8/9/0/-/= to F6/F7/F8/F9/F10/F11/F12.
+                 [:!Q#C#T#O#S6 :f6]
+                 [:!Q#C#T#O#S7 :f7]
+                 [:!Q#C#T#O#S8 :f8]
+                 [:!Q#C#T#O#S9 :f9]
+                 [:!Q#C#T#O#S0 :f10]
+                 [:!Q#C#T#O#Shyphen :f11]
+                 [:!Q#C#T#O#Sequal_sign :f12]
+                 ; Convenient common keys => U/I/O to Fn/Tab/Return.
+                 [:!Q#C#T#O#Su :fn]
+                 [:!Q#C#T#O#Si :tab]
+                 [:!Q#C#T#O#So :return_or_enter]
+                 ; Text navigation => H/J/K/L to Left/Down/Up/Right.
+                 [:!Q#C#T#O#Sh :left_arrow]
+                 [:!Q#C#T#O#Sj :down_arrow]
+                 [:!Q#C#T#O#Sk :up_arrow]
+                 [:!Q#C#T#O#Sl :right_arrow]
+                 ; Text deletion =>
+                 ;  - N to Delete sentence backwards.
+                 ;  - M to Delete word backwards.
+                 ;  - , to Delete backwards.
+                 ;  - . to Delete forwards.
+                 ;  - / to Delete word forwards.
+                 ; NOTE: The rules below don't allow any optional modifiers.
+                 [:!Qn :!Cdelete_or_backspace]
+                 [:!Qm :!Odelete_or_backspace]
+                 [:!Qcomma :delete_or_backspace]
+                 [:!Qperiod :delete_forward]
+                 [:!Qslash :!Odelete_forward]]}
+
+        {:des "Right Option Layer - Hyper Arrow Keys",
+         ; This layer is activated by holding Right Option and using the keys
+         ; that are supposed to be used with the right hand with the correct
+         ; typing technique.
+         ; This layer provides only the mapping of the H/J/K/L keys to the vim-style
+         ; arrow keys modified with the Hyper key (all modifiers activated at once)
+         ; and other keys to themselves with the Hyper key.
+         ; This layer is less so about basic commands and more about mapping the 
+         ; resulting keys to do window management via other tools.
+         :rules [; H/J/K/L to Hyper + Left/Down/Up/Right.
+                 [:!Eh :!!left_arrow]
+                 [:!Ej :!!down_arrow]
+                 [:!Ek :!!up_arrow]
+                 [:!El :!!right_arrow]
+                 ; M to Hyper + M.
+                 [:!Em :!!m]]}
+
+        {:des "Left Command Layer - Symbols"
+         ; This layer is activated by holding Left Command and using the keys
+         ; that are supposed to be used with the left hand with the correct
+         ; typing technique.
+         ; This layer provides 2 main functionalities:
+         ;  - Better access to function keys (F1-F5).
+         ;  - Comfortable access to symbols.
+         ; Number keys map to function keys, and all other keys map to symbols
+         ; that are not that convenient with the default layout.
+         ; All of the rules allow right modifiers as this is the "correct"
+         ; typing technique. The only exceptions are the rules where the resulting
+         ; key includes the Right Shift modifier. In this case, the rules allow all
+         ; right modifiers except the Right Shift.
+         :rules [; Function keys => 6/7/8/9/0/-/= to F6/F7/F8/F9/F10/F11/F12.
+                 [:!C#Q#W#E#R1 :f1]
+                 [:!C#Q#W#E#R2 :f2]
+                 [:!C#Q#W#E#R3 :f3]
+                 [:!C#Q#W#E#R4 :f4]
+                 [:!C#Q#W#E#R5 :f5]
+                 ; Q/W/E/R to -/_/=/+.
+                 [:!C#Q#W#E#Rq :hyphen]
+                 [:!C#Q#W#Ew :!Rhyphen]
+                 [:!C#Q#W#E#Re :equal_sign]
+                 [:!C#Q#W#Er :!Requal_sign]
+                 ; A/S/D/F to [/{/}/]
+                 [:!C#Q#W#E#Ra :open_bracket]
+                 [:!C#Q#W#Es :!Ropen_bracket]
+                 [:!C#Q#W#Ed :!Rclose_bracket]
+                 [:!C#Q#W#E#Rf :close_bracket]
+                 ; Z/X/C/V to `/~/\/|
+                 [:!C#Q#W#E#Rz :grave_accent_and_tilde]
+                 [:!C#Q#W#Ex :!Rgrave_accent_and_tilde]
+                 [:!C#Q#W#E#Rc :backslash]
+                 [:!C#Q#W#Ev :!Rbackslash]]}
+
+        {:des "Left Option Layer - Applications",
+         ; This layer is activated by holding Left Option and using the keys
+         ; that are supposed to be used with the left hand with the correct
+         ; typing technique.
+         ; This layer mainly provides the functionality to open or switch between
+         ; most commonly used by me applications.
+         :rules [; General applications.
+                 [:!Oq [:open "Reader"]]
+                 [:!Ow [:open "Google Chrome"]]
+                 [:!Oe [:open "Obsidian"]]
+                 [:!Or [:open "Raycast"]]
+                 [:!Ot [:open "Finder"]]
+                 ; Coding-related applications.
+                 [:!Oa [:open "Postman"]]
+                 [:!Os [:open "Docker Desktop"]]
+                 [:!Od [:open "IntelliJ IDEA.app"]]
+                 [:!Of [:open "Alacritty"]]
+                 ; Communication applications.
+                 [:!Oz [:open "zoom.us"]]
+                 [:!Ox [:open "Microsoft Teams"]]
+                 [:!Oc [:open "Telegram"]]
+                 [:!Ov [:open "Slack"]]
+                 [:!Ob [:open "Messages"]]]}]}

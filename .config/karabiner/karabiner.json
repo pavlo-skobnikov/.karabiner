@@ -626,6 +626,18 @@
           "type" : "basic"
         }, {
           "from" : {
+            "key_code" : "y",
+            "modifiers" : {
+              "mandatory" : [ "right_command" ],
+              "optional" : [ "any" ]
+            }
+          },
+          "to" : [ {
+            "key_code" : "fn"
+          } ],
+          "type" : "basic"
+        }, {
+          "from" : {
             "key_code" : "u",
             "modifiers" : {
               "mandatory" : [ "right_command" ],

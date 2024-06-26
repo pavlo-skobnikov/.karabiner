@@ -56,7 +56,7 @@
          ; typing technique.
          ; This layer provides 3 main functionalities:
          ;  - Better access to function keys (F6-F12).
-         ;  - Comfortable Return and (Forward) Delete keys.
+         ;  - Comfortable Fn, Return, and (Forward) Delete keys.
          ;  - Comfortable navigation over text.
          ; All of the functionalities above are grouped by "levels" of keys in
          ; relation to the home row.
@@ -71,7 +71,8 @@
                  [:!Q#C#T#O#S0 :f10]
                  [:!Q#C#T#O#Shyphen :f11]
                  [:!Q#C#T#O#Sequal_sign :f12]
-                 ; Convenient common keys => U/I/O to Return/Delete/Forward Delete.
+                 ; Convenient common keys => Y/U/I/O to Fn/Return/Delete/Forward Delete.
+                 [:!Q#C#T#O#Sy :fn]
                  [:!Q#C#T#O#Su :return_or_enter]
                  [:!Q#C#T#O#Si :delete_or_backspace]
                  [:!Q#C#T#O#Si :delete_forward]

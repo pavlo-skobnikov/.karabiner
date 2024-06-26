@@ -54,11 +54,10 @@
          ; This "layer" is activated by holding Right Command and using the keys
          ; that are supposed to be used with the right hand with the correct
          ; typing technique.
-         ; This layer provides 4 main functionalities:
+         ; This layer provides 3 main functionalities:
          ;  - Better access to function keys (F6-F12).
-         ;  - Comfortable text deletion.
+         ;  - Comfortable Return and (Forward) Delete keys.
          ;  - Comfortable navigation over text.
-         ;  - Comfortable Return and Fn.
          ; All of the functionalities above are grouped by "levels" of keys in
          ; relation to the home row.
          ; Additionally, most of the rules allow only the left modifiers as they
@@ -72,26 +71,16 @@
                  [:!Q#C#T#O#S0 :f10]
                  [:!Q#C#T#O#Shyphen :f11]
                  [:!Q#C#T#O#Sequal_sign :f12]
-                 ; Text deletion =>
-                 ;  - N to Delete sentence backwards.
-                 ;  - M to Delete word backwards.
-                 ;  - , to Delete backwards.
-                 ;  - . to Delete forwards.
-                 ;  - / to Delete word forwards.
-                 ; NOTE: The rules below don't allow any optional modifiers.
-                 [:!Qy :!Cdelete_or_backspace]
-                 [:!Qu :!Odelete_or_backspace]
-                 [:!Qi :delete_or_backspace]
-                 [:!Qo :delete_forward]
-                 [:!Qp :!Odelete_forward]
+                 ; Convenient common keys => U/I/O to Return/Delete/Forward Delete.
+                 [:!Q#C#T#O#Su :return_or_enter]
+                 [:!Q#C#T#O#Si :delete_or_backspace]
+                 [:!Q#C#T#O#Si :delete_forward]
                  ; Text navigation => H/J/K/L to Left/Down/Up/Right.
                  [:!Q#C#T#O#Sh :left_arrow]
                  [:!Q#C#T#O#Sj :down_arrow]
                  [:!Q#C#T#O#Sk :up_arrow]
                  [:!Q#C#T#O#Sl :right_arrow]
-                 ; Convenient common keys => N/M to Fn/Return.
-                 [:!Q#C#T#O#Sn :fn]
-                 [:!Q#C#T#O#Sm :return_or_enter]]}
+                 [:!Q#C#T#O#Sn :fn]]}
 
         {:des "Left Command Layer - Applications"
          ; This layer is activated by holding Left Option and using the keys

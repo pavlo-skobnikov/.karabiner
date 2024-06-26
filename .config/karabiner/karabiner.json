@@ -626,33 +626,22 @@
           "type" : "basic"
         }, {
           "from" : {
-            "key_code" : "y",
-            "modifiers" : {
-              "mandatory" : [ "right_command" ]
-            }
-          },
-          "to" : [ {
-            "key_code" : "delete_or_backspace",
-            "modifiers" : [ "left_command" ]
-          } ],
-          "type" : "basic"
-        }, {
-          "from" : {
             "key_code" : "u",
             "modifiers" : {
-              "mandatory" : [ "right_command" ]
+              "mandatory" : [ "right_command" ],
+              "optional" : [ "any" ]
             }
           },
           "to" : [ {
-            "key_code" : "delete_or_backspace",
-            "modifiers" : [ "left_option" ]
+            "key_code" : "return_or_enter"
           } ],
           "type" : "basic"
         }, {
           "from" : {
             "key_code" : "i",
             "modifiers" : {
-              "mandatory" : [ "right_command" ]
+              "mandatory" : [ "right_command" ],
+              "optional" : [ "any" ]
             }
           },
           "to" : [ {
@@ -661,25 +650,14 @@
           "type" : "basic"
         }, {
           "from" : {
-            "key_code" : "o",
+            "key_code" : "i",
             "modifiers" : {
-              "mandatory" : [ "right_command" ]
+              "mandatory" : [ "right_command" ],
+              "optional" : [ "any" ]
             }
           },
           "to" : [ {
             "key_code" : "delete_forward"
-          } ],
-          "type" : "basic"
-        }, {
-          "from" : {
-            "key_code" : "p",
-            "modifiers" : {
-              "mandatory" : [ "right_command" ]
-            }
-          },
-          "to" : [ {
-            "key_code" : "delete_forward",
-            "modifiers" : [ "left_option" ]
           } ],
           "type" : "basic"
         }, {
@@ -740,18 +718,6 @@
           },
           "to" : [ {
             "key_code" : "fn"
-          } ],
-          "type" : "basic"
-        }, {
-          "from" : {
-            "key_code" : "m",
-            "modifiers" : {
-              "mandatory" : [ "right_command" ],
-              "optional" : [ "any" ]
-            }
-          },
-          "to" : [ {
-            "key_code" : "return_or_enter"
           } ],
           "type" : "basic"
         } ]

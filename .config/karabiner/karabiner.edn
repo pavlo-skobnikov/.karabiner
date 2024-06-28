@@ -1,11 +1,12 @@
 ;; This file is a configuration file for goku to generate the configuration file
 ;; for Karabiner-Elements.
 ;;
-;; The EDN format allows for a _very_ concise and flexible configuration of Karabiner.
+;; The EDN format allows for a _very_ concise, flexible, and powerful configuration 
+;; of Karabiner. Although my usage of goku is quite simple, I still prefer to use 
+;; goku because of its compact configuration.
 ;;
 ;; There are several main guidances that this configuration follows:
 ;;  - Keep both hands engaged in typing i.e. opposing hands should be engaged equally.
-;;  - Reduce the strain on the pinky fingers by keeping their "active areas" to a minimum.
 ;;  - Ensure that the wrists are in a neutral position as much as possible.
 ;;  - Make the custom rules and mappings as agnostic as possible to the resulting actions.
 ;;  - Engage the thumbs more in typing.
@@ -26,10 +27,7 @@
 ;;  P  | caps_lock
 ;;  !! | mandatory command + control + optional + shift (hyper)
 ;;  ## | optional any
-{:templates {:open "open -a \"%s\""
-             :open-chrome-profile "open -a \"Google Chrome\" --args --profile-directory=\"%s\""}
-
- :main [{:des "Convenient Spacebar"
+{:main [{:des "Convenient Spacebar"
          ; This modification makes the spacebar more useful by turning it
          ; into the Left Shift when it's held down and used in combination
          ; with other keys.
@@ -37,6 +35,12 @@
          ; Although this modification doesn't follow the "best practices"
          ; of typig techniques, it's very convenient and comfortable.
          :rules [[:##spacebar :left_shift nil {:alone :spacebar}]]}
+
+        {:des "Easy Forward Delete"
+         ; This modification makes it easy to do forward deletion by
+         ; turning the Delete key into Forward Delete when the Left Shift
+         ; is active. HINT: Works great with the previous modification.
+         :rules [[:!S#C#Odelete_or_backspace :delete_forward]]}
 
         {:des "Mirror Control & Easy Escape"
          ; This modification does several things:
@@ -50,13 +54,12 @@
          :rules [[:#C#O#Scaps_lock :left_control nil {:alone :escape}]
                  [:#Q#E#Rquote :right_control nil {:alone :quote}]]}
 
-        {:des "Right Command Layer - Navigation & Actions",
+        {:des "Right Command Layer - Function Keys & Navigation",
          ; This "layer" is activated by holding Right Command and using the keys
          ; that are supposed to be used with the right hand with the correct
          ; typing technique.
-         ; This layer provides 3 main functionalities:
+         ; This layer provides 2 main functionalities:
          ;  - Better access to function keys (F6-F12).
-         ;  - Comfortable Fn, Return, and (Forward) Delete keys.
          ;  - Comfortable navigation over text.
          ; All of the functionalities above are grouped by "levels" of keys in
          ; relation to the home row.
@@ -71,11 +74,6 @@
                  [:!Q#C#T#O#S0 :f10]
                  [:!Q#C#T#O#Shyphen :f11]
                  [:!Q#C#T#O#Sequal_sign :f12]
-                 ; Convenient common keys => Y/U/I/O to Fn/Return/Delete/Forward Delete.
-                 [:!Q#C#T#O#Sy :fn]
-                 [:!Q#C#T#O#Su :return_or_enter]
-                 [:!Q#C#T#O#Si :delete_or_backspace]
-                 [:!Q#C#T#O#Si :delete_forward]
                  ; Text navigation => H/J/K/L to Left/Down/Up/Right.
                  [:!Q#C#T#O#Sh :left_arrow]
                  [:!Q#C#T#O#Sj :down_arrow]
@@ -83,35 +81,13 @@
                  [:!Q#C#T#O#Sl :right_arrow]
                  [:!Q#C#T#O#Sn :fn]]}
 
-        {:des "Left Command Layer - Applications"
-         ; This layer is activated by holding Left Option and using the keys
-         ; that are supposed to be used with the left hand with the correct
-         ; typing technique.
-         ; This layer provides 2 main functionalities:
-         ;  - Better access to function keys (F1-F5).
-         ;  - Quick-switching between most commonly used applications.
-         :rules [; Function keys => 6/7/8/9/0/-/= to F6/F7/F8/F9/F10/F11/F12.
+        {:des "Left Command Layer - Function Keys"
+         ; This layer is activated by holding Left Command and using the first
+         ; five number row keys. This layer provides better access to function 
+         ; keys (F1-F5).
+         :rules [; Function keys => 1/2/3/4/5 to F1/F2/F3/F4/F5.
                  [:!C#Q#W#E#R1 :f1]
                  [:!C#Q#W#E#R2 :f2]
                  [:!C#Q#W#E#R3 :f3]
                  [:!C#Q#W#E#R4 :f4]
-                 [:!C#Q#W#E#R5 :f5]
-                 ; General applications.
-                 [:!Cb [:open "Obsidian"]] ; Second-[b]rain.
-                 [:!Cf [:open "Finder"]] ; [F]inder.
-                 [:!Cg [:open "Google Chrome"]] ; [G]oogle Chrome.
-                 [:!Cr [:open "Reader"]] ; [R]eader.
-                 ; Coding-related applications.
-                 [:!Ca [:open "Alacritty"]] ; [A]lacritty.
-                 [:!Cc [:open "IntelliJ IDEA.app"]] ; [C]ode.
-                 [:!Cd [:open "Docker Desktop"]] ; [D]ocker.
-                 ; Communication applications.
-                 [:!Cs [:open "Slack"]] ; [S]lack.
-                 [:!Ct [:open "Telegram"]] ; [T]elegram.
-                 [:!Cw [:open "Microsoft Teams"]] ; [W]ork messanger.
-                 [:!Cz [:open "zoom.us"]] ; [Z]oom.
-                 ; Productivity applications.
-                 [:!Ce [:open "Mail"]] ; [E]-mail.
-                 [:!Cv [:open "Calendar"]] ; [V]iew agenda.
-                 [:!Cx [:open "Reminders"]] ; E[x]ecute tasks.
-                 ]}]}
+                 [:!C#Q#W#E#R5 :f5]]}]}

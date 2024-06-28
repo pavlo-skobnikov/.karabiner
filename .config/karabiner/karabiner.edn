@@ -54,6 +54,11 @@
          :rules [[:#C#O#Scaps_lock :left_control nil {:alone :escape}]
                  [:#Q#E#Rquote :right_control nil {:alone :quote}]]}
 
+        {:des "Hyper Key"
+         ; This modification adds an easy way to trigger all modifiers
+         ; i.e. the _Hyper_ key.
+         :rules [[:left_control :!C!O!Sleft_control]]}
+
         {:des "Right Command Layer - Function Keys & Navigation",
          ; This "layer" is activated by holding Right Command and using the keys
          ; that are supposed to be used with the right hand with the correct

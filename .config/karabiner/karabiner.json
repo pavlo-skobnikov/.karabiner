@@ -78,6 +78,18 @@
           "type" : "basic"
         } ]
       }, {
+        "description" : "Hyper Key",
+        "manipulators" : [ {
+          "from" : {
+            "key_code" : "left_control"
+          },
+          "to" : [ {
+            "key_code" : "left_control",
+            "modifiers" : [ "left_command", "left_control", "left_option", "left_shift" ]
+          } ],
+          "type" : "basic"
+        } ]
+      }, {
         "description" : "Right Command Layer - Function Keys & Navigation",
         "manipulators" : [ {
           "from" : {

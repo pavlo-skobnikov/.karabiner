@@ -2,15 +2,13 @@
 ;; for Karabiner-Elements.
 ;;
 ;; The EDN format allows for a _very_ concise, flexible, and powerful configuration 
-;; of Karabiner. Although my usage of goku is quite simple, I still prefer to use 
-;; goku because of its compact configuration.
+;; of Karabiner.
 ;;
 ;; There are several main guidances that this configuration follows:
 ;;  - Keep both hands engaged in typing i.e. opposing hands should be engaged equally.
 ;;  - Ensure that the wrists are in a neutral position as much as possible.
 ;;  - Make the custom rules and mappings as agnostic as possible to the resulting actions.
-;;  - Engage the thumbs more in typing.
-;;  - Don't go crazy with remapping => add only essential ergonomic improvements.
+;;  - Engage the thumbs more in typing rather than doing difficult stretches.
 ;;
 ;; Below is a brief reference for the to/from mappings:
 ;;  !  | means mandatory
@@ -27,26 +25,108 @@
 ;;  P  | caps_lock
 ;;  !! | mandatory command + control + optional + shift (hyper)
 ;;  ## | optional any
-{:main [{:des "Convenient Spacebar"
-         ; This modification makes the spacebar more useful by turning it
-         ; into the Left Shift when it's held down and used in combination
-         ; with other keys.
-         ; When the spacebar is tapped, it acts as the regular Spacebar.
-         ; Although this modification doesn't follow the "best practices"
-         ; of typig techniques, it's very convenient and comfortable.
-         :rules [[:##spacebar :left_shift nil {:alone :spacebar}]]}
+{; Templates use basic string formatting to substitute the given arguments
+ ; i.e. %s is substituted with the application name.
+ :templates {; This template is used to launch or focus an application.
+             :launch "osascript -e 'tell application \"%s\" to activate'"}
 
-        {:des "Easy Forward Delete"
-         ; This modification makes it easy to do forward deletion by
-         ; turning the Delete key into Forward Delete when the Left Shift
-         ; is active. HINT: Works great with the previous modification.
-         :rules [[:!S#C#Odelete_or_backspace :delete_forward]]}
+ ; NOTE: Simlayers is based on the `simultaneous` functionality, which means that
+ ; to trigger any given layer, the keys must be pressed at the "same" time i.e.
+ ; within the Karabiner's `simultaneous_threshold_milliseconds` value. Otherwise,
+ ; the layer trigger key will be repeatedly inserted.
+ :simlayers {; For mapping keys to manage application windows.
+             :window-mode {:key :w}
+             ; For launching applications.
+             :launch-mode {:key :l}}
+
+ :main [{:des "Window Mode"
+         ; This simlayer modification provides a comfortable way to manage
+         ; application windows. Karabiner cannot directly manage windows, so,
+         ; the rules in this modification only map key to themselves with
+         ; Control, Option, and Command modifiers.
+         ;
+         ; The above is achieved by having the rules map keys to uncommon
+         ; modifier combinations, which ensures that no shortcut conflicts 
+         ; will arise within any other application.
+         ;
+         ; The modified keys should be mapped to the desired window management
+         ; via other application the following way:
+         ;  Y => Move application window to the upper-left 1/4 of the screen.
+         ;  O => Move application window to the upper-right 1/4 of the screen.
+         ;  H => Move application window to the left 1/2 of the screen.
+         ;  J => Move application window to the lower 1/2 of the screen.
+         ;  K => Move application window to the upper 1/2 of the screen.
+         ;  L => Move application window to the right 1/2 of the screen.
+         ;  N => Move application window to the lower-left 1/4 of the screen.
+         ;  M => Maximize the application window.
+         ;  , => Center the application window.
+         ;  . => Move application window to the lower-right 1/4 of the screen.
+         :rules [:window-mode
+                 [:y :!CTOy]
+                 [:o :!CTOo]
+                 [:h :!CTOh]
+                 [:j :!CTOj]
+                 [:k :!CTOk]
+                 [:l :!CTOl]
+                 [:n :!CTOn]
+                 [:m :!CTOm]
+                 [:comma :!CTOcomma]
+                 [:period :!CTOperiod]]}
+
+        {:des "Launch Mode"
+         ; This simlayer modification provides a comfortable way to manage
+         ; application windows. Karabiner cannot directly manage windows, so,
+         ; the rules in this modification only map key to themselves with
+         ; Control, Option, and Command modifiers.
+         ;
+         ; This is an uncommon modification, which is why it should be ensured
+         ; that no shortcut conflicts will arise within any other application.
+         ;
+         ; The modified keys should be mapped to the desired window management
+         ; via other application the following way:
+         ;  Y => Move application window to the upper-left 1/4 of the screen.
+         ;  O => Move application window to the upper-right 1/4 of the screen.
+         ;  H => Move application window to the left 1/2 of the screen.
+         ;  J => Move application window to the lower 1/2 of the screen.
+         ;  K => Move application window to the upper 1/2 of the screen.
+         ;  L => Move application window to the right 1/2 of the screen.
+         ;  N => Move application window to the lower-left 1/4 of the screen.
+         ;  M => Maximize the application window.
+         ;  , => Center the application window.
+         ;  . => Move application window to the lower-right 1/4 of the screen.
+         :rules [:launch-mode
+                 ; Code editors.
+                 [:a [:launch "Alacritty"]]
+                 [:e [:launch "IntelliJ IDEA"]] ; Mneumonic for => [E]ditor.
+                 ; Other developer tools.
+                 [:d [:launch "Docker Desktop"]]
+                 [:h [:launch "Postman"]] ; Mnemonic for => [H]TTP Requests.
+                 ; The internet.
+                 [:g [:launch "Google Chrome"]]
+                 ; Communication.
+                 [:m [:launch "Mail"]]
+                 [:t [:launch "Telegram"]]
+                 ; Work communication.
+                 [:s [:launch "Slack"]]
+                 [:w [:launch "Microsoft Teams"]] ; Mnemonic for => [W]ork messenger.
+                 [:z [:launch "zoom.us"]]
+                 ; Productivity.
+                 [:x [:launch "TickTick"]] ; Mnemonic for => E[x]ecture tasks.
+                 [:c [:launch "Calendar"]]
+                 [:b [:launch "Bear"]]
+                 ; Other personal tools.
+                 [:r [:launch "Reader"]]
+                 [:1 [:launch "1Password"]]
+                 ; Misc.
+                 [:p [:launch "Preview"]]
+                 [:f [:launch "Finder"]]]}
 
         {:des "Mirror Control & Easy Escape"
          ; This modification does several things:
          ;  - Caps Lock is turned into the Left Control when held down.
          ;  - Caps Lock is turned into the Escape when tapped.
          ;  - Quote (') is turned into the Right Control when held down.
+         ;
          ; These rules first and foremost make both the Control and Escape
          ; more accessible and comfortable to use. Secondly, the modification
          ; fixes the issue of the Control key on MacOs being asymmetrical i.e.
@@ -54,45 +134,58 @@
          :rules [[:#C#O#Scaps_lock :left_control nil {:alone :escape}]
                  [:#Q#E#Rquote :right_control nil {:alone :quote}]]}
 
+        {:des "Convenient Spacebar"
+         ; This modification makes the spacebar more useful by turning it
+         ; into the Left Shift when it's held down and used in combination
+         ; with other keys.
+         ;
+         ; When the spacebar is tapped, it acts as the regular Spacebar.
+         ; Although this modification doesn't follow the "best practices"
+         ; of typing techniques, it's very convenient and comfortable.
+         :rules [[:##spacebar :left_shift nil {:alone :spacebar}]]}
+
         {:des "Hyper Key"
          ; This modification adds an easy way to trigger all modifiers
-         ; i.e. the _Hyper_ key.
+         ; i.e. the _Hyper_ key by pressing the Left Control key.
+         ;
+         ; This modification's "purpose" is to allow further action
+         ; bindings in other applications.
          :rules [[:left_control :!C!O!Sleft_control]]}
 
-        {:des "Right Command Layer - Function Keys & Navigation",
-         ; This "layer" is activated by holding Right Command and using the keys
-         ; that are supposed to be used with the right hand with the correct
-         ; typing technique.
-         ; This layer provides 2 main functionalities:
-         ;  - Better access to function keys (F6-F12).
-         ;  - Comfortable navigation over text.
-         ; All of the functionalities above are grouped by "levels" of keys in
-         ; relation to the home row.
-         ; Additionally, most of the rules allow only the left modifiers as they
-         ; are triggered by the opposing hand, and this is in the accordance
-         ; with the "correct" typing technique.
-         :rules [; Function keys => 6/7/8/9/0/-/= to F6/F7/F8/F9/F10/F11/F12.
-                 [:!Q#C#T#O#S6 :f6]
+        {:des "Left Command Layer - 1-5 Function Keys"
+         ; This layer is activated by holding Left Command and using the first
+         ; five number row keys. This layer provides better access to function 
+         ; keys.
+         ;
+         ; Function keys => 1/2/3/4/5 to F1/F2/F3/F4/F5.
+         :rules [[:!C#Q#W#E#R1 :f1]
+                 [:!C#Q#W#E#R2 :f2]
+                 [:!C#Q#W#E#R3 :f3]
+                 [:!C#Q#W#E#R4 :f4]
+                 [:!C#Q#W#E#R5 :f5]]}
+
+        {:des "Right Command Layer - 6-12 Function Keys & Arrow Keys",
+         ; This layer is activated by holding Right Command and using the first
+         ; rest of the number row keys. This layer provides better access to function
+         ; keys.
+         ;
+         ; Function keys => 6/7/8/9/0/-/= to F6/F7/F8/F9/F10/F11/F12.
+         ; Text navigation => H/J/K/L to Left/Down/Up/Right.
+         :rules [[:!Q#C#T#O#S6 :f6]
                  [:!Q#C#T#O#S7 :f7]
                  [:!Q#C#T#O#S8 :f8]
                  [:!Q#C#T#O#S9 :f9]
                  [:!Q#C#T#O#S0 :f10]
                  [:!Q#C#T#O#Shyphen :f11]
                  [:!Q#C#T#O#Sequal_sign :f12]
-                 ; Text navigation => H/J/K/L to Left/Down/Up/Right.
                  [:!Q#C#T#O#Sh :left_arrow]
                  [:!Q#C#T#O#Sj :down_arrow]
                  [:!Q#C#T#O#Sk :up_arrow]
                  [:!Q#C#T#O#Sl :right_arrow]
                  [:!Q#C#T#O#Sn :fn]]}
 
-        {:des "Left Command Layer - Function Keys"
-         ; This layer is activated by holding Left Command and using the first
-         ; five number row keys. This layer provides better access to function 
-         ; keys (F1-F5).
-         :rules [; Function keys => 1/2/3/4/5 to F1/F2/F3/F4/F5.
-                 [:!C#Q#W#E#R1 :f1]
-                 [:!C#Q#W#E#R2 :f2]
-                 [:!C#Q#W#E#R3 :f3]
-                 [:!C#Q#W#E#R4 :f4]
-                 [:!C#Q#W#E#R5 :f5]]}]}
+        {:des "Easy Forward Delete"
+         ; This modification makes it easy to do forward deletion by
+         ; turning the Delete key into Forward Delete when the Left Shift
+         ; is active.
+         :rules [[:!S#C#Odelete_or_backspace :delete_forward]]}]}

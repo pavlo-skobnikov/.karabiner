@@ -37,7 +37,7 @@
  :simlayers {; For mapping keys to manage application windows.
              :window-mode {:key :w}
              ; For launching applications.
-             :launch-mode {:key :l}}
+             :application-mode {:key :a}}
 
  :main [{:des "Window Mode"
          ; This simlayer modification provides a comfortable way to manage
@@ -73,7 +73,7 @@
                  [:comma :!CTOcomma]
                  [:period :!CTOperiod]]}
 
-        {:des "Launch Mode"
+        {:des "Application Mode"
          ; This simlayer modification provides a comfortable way to manage
          ; application windows. Karabiner cannot directly manage windows, so,
          ; the rules in this modification only map key to themselves with
@@ -94,31 +94,29 @@
          ;  M => Maximize the application window.
          ;  , => Center the application window.
          ;  . => Move application window to the lower-right 1/4 of the screen.
-         :rules [:launch-mode
-                 ; Code editors.
-                 [:a [:launch "Alacritty"]]
-                 [:e [:launch "IntelliJ IDEA"]] ; Mneumonic for => [E]ditor.
+         :rules [:application-mode
+                 ; Code.
+                 [:t [:launch "Alacritty"]] ; [T]erminal.
+                 [:i [:launch "IntelliJ IDEA"]]
                  ; Other developer tools.
                  [:d [:launch "Docker Desktop"]]
-                 [:h [:launch "Postman"]] ; Mnemonic for => [H]TTP Requests.
+                 [:p [:launch "Postman"]]
                  ; The internet.
                  [:g [:launch "Google Chrome"]]
+                 [:b [:launch "Safari"]] ; [B]rowser.
+                 ; Productivity.
+                 [:c [:launch "Calendar"]]
+                 [:n [:launch "Notes"]]
+                 [:o [:launch "Freeform"]] ; Freef[o]rm.
                  ; Communication.
                  [:m [:launch "Mail"]]
                  [:t [:launch "Telegram"]]
                  ; Work communication.
                  [:s [:launch "Slack"]]
-                 [:w [:launch "Microsoft Teams"]] ; Mnemonic for => [W]ork messenger.
-                 [:z [:launch "zoom.us"]]
-                 ; Productivity.
-                 [:x [:launch "TickTick"]] ; Mnemonic for => E[x]ecture tasks.
-                 [:c [:launch "Calendar"]]
-                 [:b [:launch "Bear"]]
-                 ; Other personal tools.
-                 [:r [:launch "Reader"]]
-                 [:1 [:launch "1Password"]]
+                 [:w [:launch "Microsoft Teams"]] ; [W]ork messenger.
+                 [:u [:launch "zoom.us"]] ; zoom.[u]s.
                  ; Misc.
-                 [:p [:launch "Preview"]]
+                 [:v [:launch "Preview"]] ; [V]iew PDFs.
                  [:f [:launch "Finder"]]]}
 
         {:des "Mirror Control & Easy Escape"
@@ -133,24 +131,6 @@
          ; only available on the left side of the keyboard.
          :rules [[:#C#O#Scaps_lock :left_control nil {:alone :escape}]
                  [:#Q#E#Rquote :right_control nil {:alone :quote}]]}
-
-        {:des "Convenient Spacebar"
-         ; This modification makes the spacebar more useful by turning it
-         ; into the Left Shift when it's held down and used in combination
-         ; with other keys.
-         ;
-         ; When the spacebar is tapped, it acts as the regular Spacebar.
-         ; Although this modification doesn't follow the "best practices"
-         ; of typing techniques, it's very convenient and comfortable.
-         :rules [[:##spacebar :left_shift nil {:alone :spacebar}]]}
-
-        {:des "Hyper Key"
-         ; This modification adds an easy way to trigger all modifiers
-         ; i.e. the _Hyper_ key by pressing the Left Control key.
-         ;
-         ; This modification's "purpose" is to allow further action
-         ; bindings in other applications.
-         :rules [[:left_control :!C!O!Sleft_control]]}
 
         {:des "Left Command Layer - 1-5 Function Keys"
          ; This layer is activated by holding Left Command and using the first

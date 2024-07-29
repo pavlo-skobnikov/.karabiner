@@ -37,7 +37,9 @@
  :simlayers {; For mapping keys to manage application windows.
              :window-mode {:key :w}
              ; For launching applications.
-             :application-mode {:key :a}}
+             :application-mode {:key :a}
+             ; For taking screenshots.
+             :screenshot-mode {:key :s}}
 
  :main [{:des "Window Mode"
          ; This simlayer modification provides a comfortable way to manage
@@ -74,26 +76,9 @@
                  [:period :!CTOperiod]]}
 
         {:des "Application Mode"
-         ; This simlayer modification provides a comfortable way to manage
-         ; application windows. Karabiner cannot directly manage windows, so,
-         ; the rules in this modification only map key to themselves with
-         ; Control, Option, and Command modifiers.
-         ;
-         ; This is an uncommon modification, which is why it should be ensured
-         ; that no shortcut conflicts will arise within any other application.
-         ;
-         ; The modified keys should be mapped to the desired window management
-         ; via other application the following way:
-         ;  Y => Move application window to the upper-left 1/4 of the screen.
-         ;  O => Move application window to the upper-right 1/4 of the screen.
-         ;  H => Move application window to the left 1/2 of the screen.
-         ;  J => Move application window to the lower 1/2 of the screen.
-         ;  K => Move application window to the upper 1/2 of the screen.
-         ;  L => Move application window to the right 1/2 of the screen.
-         ;  N => Move application window to the lower-left 1/4 of the screen.
-         ;  M => Maximize the application window.
-         ;  , => Center the application window.
-         ;  . => Move application window to the lower-right 1/4 of the screen.
+         ; This simlayer modification provides a comfortable way to switch
+         ; between applications. In short, this mode is based on calling a
+         ; bash script to launch or focus an application.
          :rules [:application-mode
                  ; Code.
                  [:t [:launch "Alacritty"]] ; [T]erminal.
@@ -118,6 +103,18 @@
                  ; Misc.
                  [:v [:launch "Preview"]] ; [V]iew PDFs.
                  [:f [:launch "Finder"]]]}
+
+        {:des "Screenshot Mode"
+         ; This simlayer modification provides a quick way to take
+         ; screenshots without having to put the hands in an awkward
+         ; position.
+         :rules [:screenshot-mode
+                 ; [M]onitor screenshot and copy.
+                 [:m :!QWR3]
+                 ; [P]artial screenshot and copy.
+                 [:p :!QWR4]
+                 ; Recording [o]ptions menu.
+                 [:o :!QR5]]}
 
         {:des "Mirror Control & Easy Escape"
          ; This modification does several things:

@@ -126,8 +126,8 @@
          ; more accessible and comfortable to use. Secondly, the modification
          ; fixes the issue of the Control key on MacOs being asymmetrical i.e.
          ; only available on the left side of the keyboard.
-         :rules [[:#C#O#Scaps_lock :left_control nil {:alone :escape}]
-                 [:#Q#E#Rquote :right_control nil {:alone :quote}]]}
+         :rules [[:##caps_lock :left_control nil {:alone :escape}]
+                 [:##quote :right_control nil {:alone :quote}]]}
 
         {:des "Convenient Spacebar"
          ; This modification makes the spacebar more useful by turning it
@@ -139,17 +139,24 @@
          ; of typing techniques, it's very convenient and comfortable.
          :rules [[:##spacebar :left_shift nil {:alone :spacebar}]]}
 
+        {:des "Disable Side Shift Keys"
+         ; This modification disables the side Shift keys to keep the
+         ; available keys to a minimum, as well as to prevent mixing up
+         ; muscle memory.
+         :rules [[:left_shift :vk_none]
+                 [:right_shift :vk_none]]}
+
         {:des "Left Command Layer - 1-5 Function Keys"
          ; This layer is activated by holding Left Command and using the first
          ; five number row keys. This layer provides better access to function 
          ; keys.
          ;
          ; Function keys => 1/2/3/4/5 to F1/F2/F3/F4/F5.
-         :rules [[:!C#Q#W#E#R1 :f1]
-                 [:!C#Q#W#E#R2 :f2]
-                 [:!C#Q#W#E#R3 :f3]
-                 [:!C#Q#W#E#R4 :f4]
-                 [:!C#Q#W#E#R5 :f5]]}
+         :rules [[:!C##1 :f1]
+                 [:!C##2 :f2]
+                 [:!C##3 :f3]
+                 [:!C##4 :f4]
+                 [:!C##5 :f5]]}
 
         {:des "Right Command Layer - 6-12 Function Keys & Arrow Keys",
          ; This layer is activated by holding Right Command and using the first
@@ -158,18 +165,18 @@
          ;
          ; Function keys => 6/7/8/9/0/-/= to F6/F7/F8/F9/F10/F11/F12.
          ; Text navigation => H/J/K/L to Left/Down/Up/Right.
-         :rules [[:!Q#C#T#O#S6 :f6]
-                 [:!Q#C#T#O#S7 :f7]
-                 [:!Q#C#T#O#S8 :f8]
-                 [:!Q#C#T#O#S9 :f9]
-                 [:!Q#C#T#O#S0 :f10]
-                 [:!Q#C#T#O#Shyphen :f11]
-                 [:!Q#C#T#O#Sequal_sign :f12]
-                 [:!Q#C#T#O#Sh :left_arrow]
-                 [:!Q#C#T#O#Sj :down_arrow]
-                 [:!Q#C#T#O#Sk :up_arrow]
-                 [:!Q#C#T#O#Sl :right_arrow]
-                 [:!Q#C#T#O#Sn :fn]]}
+         :rules [[:!Q##6 :f6]
+                 [:!Q##7 :f7]
+                 [:!Q##8 :f8]
+                 [:!Q##9 :f9]
+                 [:!Q##0 :f10]
+                 [:!Q##hyphen :f11]
+                 [:!Q##equal_sign :f12]
+                 [:!Q##h :left_arrow]
+                 [:!Q##j :down_arrow]
+                 [:!Q##k :up_arrow]
+                 [:!Q##l :right_arrow]
+                 [:!Q##n :fn]]}
 
         {:des "Easy Forward Delete"
          ; This modification makes it easy to do forward deletion by

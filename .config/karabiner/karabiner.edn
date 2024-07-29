@@ -132,6 +132,16 @@
          :rules [[:#C#O#Scaps_lock :left_control nil {:alone :escape}]
                  [:#Q#E#Rquote :right_control nil {:alone :quote}]]}
 
+        {:des "Convenient Spacebar"
+         ; This modification makes the spacebar more useful by turning it
+         ; into the Left Shift when it's held down and used in combination
+         ; with other keys.
+         ;
+         ; When the spacebar is tapped, it acts as the regular Spacebar.
+         ; Although this modification doesn't follow the "best practices"
+         ; of typing techniques, it's very convenient and comfortable.
+         :rules [[:##spacebar :left_shift nil {:alone :spacebar}]]}
+
         {:des "Left Command Layer - 1-5 Function Keys"
          ; This layer is activated by holding Left Command and using the first
          ; five number row keys. This layer provides better access to function 
